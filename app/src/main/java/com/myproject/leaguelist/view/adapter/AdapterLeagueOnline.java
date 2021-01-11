@@ -1,6 +1,8 @@
 package com.myproject.leaguelist.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.myproject.leaguelist.R;
 import com.myproject.leaguelist.pojo.League;
+import com.myproject.leaguelist.view.Detail;
 
 import java.util.List;
 
@@ -47,6 +50,14 @@ public class AdapterLeagueOnline extends RecyclerView.Adapter<AdapterLeagueOnlin
         holder.cardView_list_league.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("league", leagueList.get(position).getStrLeague());
+                bundle.putString("sport",leagueList.get(position).getStrSport());
+                bundle.putString("alternate",leagueList.get(position).getStrLeagueAlternate());
+                Intent intent = new Intent(context, Detail.class);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+
 
             }
         });

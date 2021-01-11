@@ -57,7 +57,7 @@ public class AdapterLeagueOnline extends RecyclerView.Adapter<AdapterLeagueOnlin
 
     @Override
     public int getItemCount() {
-        return 0;
+        return leagueList.size();
     }
 
     public class OnlineAdapterChild extends RecyclerView.ViewHolder{

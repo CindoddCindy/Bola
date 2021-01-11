@@ -7,7 +7,7 @@
     tools:context=".view.BottomNav">
 
     <FrameLayout
-        android:id="@+id/page_container_buyer"
+        android:id="@+id/page_container_league"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottomNavigationViewSoccer"

@@ -3,12 +3,20 @@ package com.myproject.leaguelist.view.frgament;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.myproject.leaguelist.R;
+import com.myproject.leaguelist.pojo.LeaguePojo;
+import com.myproject.leaguelist.sqlite.AddFavorite;
+import com.myproject.leaguelist.view.adapter.AdapterFavorite;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +33,12 @@ public class Favorite extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private AddFavorite addFavorite;
+    private RecyclerView recyclerView;
+    private AdapterFavorite adapterFavorite;
+    private List<LeaguePojo> leaguePojoList = new ArrayList<>();
+
 
     public Favorite() {
         // Required empty public constructor
@@ -61,6 +75,24 @@ public class Favorite extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorite, container, false);
+        View view =inflater.inflate(R.layout.fragment_favorite, container, false);
+
+        addFavorite=new AddFavorite(getContext());
+
+        recyclerView = view.findViewById(R.id.rv_league_sqlite);
+        adapterFavorite = new AdapterFavorite(getContext(),leaguePojoList);
+        recyclerView.setAdapter(adapterFavorite);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        leaguePojoList = addFavorite.getAllLeague();
+        adapterFavorite = new AdapterFavorite(getContext(),leaguePojoList);
+        recyclerView.setAdapter(adapterFavorite);
     }
 }

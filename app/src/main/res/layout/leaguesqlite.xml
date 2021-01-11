@@ -116,6 +116,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
                         <TextView
+                            android:id="@+id/tv_league_sqlite_adapter"
                             android:drawablePadding="10dp"
                             android:padding="5dp"
                             android:layout_width="match_parent"
@@ -124,6 +125,7 @@
 
                         </TextView>
                         <TextView
+                            android:id="@+id/tv_sport_sqlite_adapter"
                             android:drawablePadding="10dp"
                             android:padding="5dp"
                             android:layout_width="match_parent"
@@ -132,6 +134,7 @@
 
                         </TextView>
                         <TextView
+                            android:id="@+id/tv_alternate_sqlite_adapter"
                             android:drawablePadding="10dp"
                             android:padding="5dp"
                             android:layout_width="match_parent"
